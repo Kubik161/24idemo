@@ -6,13 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.archonalabs.a24idemo.core.MovieFetcher
 import com.archonalabs.a24idemo.domain.Config
 import com.archonalabs.a24idemo.domain.Result
 import com.archonalabs.a24idemo.domain.feature.movie.model.Movie
-import com.archonalabs.a24idemo.domain.feature.movie.model.MovieItem
 import com.archonalabs.a24idemo.domain.usecase.feature.movie.LoadMovieDetailUseCase
-import com.archonalabs.a24idemo.feature.movielist.MovieListAdapter
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

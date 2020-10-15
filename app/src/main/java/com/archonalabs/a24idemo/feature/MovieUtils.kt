@@ -1,6 +1,5 @@
 package com.archonalabs.a24idemo.feature
 
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneId
@@ -22,8 +21,6 @@ object MovieUtils {
             today.add(Calendar.DAY_OF_YEAR, -days)
             today.time
         }
-
-        Timber.d("date is: %s", startDateEpoch)
 
         return apiDateFormat.format(startDateEpoch)
     }

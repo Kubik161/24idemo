@@ -12,9 +12,7 @@ import com.archonalabs.a24idemo.R
 import com.archonalabs.a24idemo.core.MainVM
 import com.archonalabs.a24idemo.databinding.FragmentMovieListBinding
 import com.archonalabs.a24idemo.feature.movie.MovieDetailFragment
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 /**
  * Created by Jakub Juroska on 10/14/20.
@@ -64,7 +62,7 @@ class MovieListFragment : Fragment() {
             }
         })
 
-        mainViewModel.showMovieDetail.observe(viewLifecycleOwner, Observer { movieId ->
+        mainViewModel.showMovieDetail.observe(viewLifecycleOwner, { movieId ->
             if (movieId != null && movieId != 0) {
                 val fragmentManager = fragmentManager
                 fragmentManager

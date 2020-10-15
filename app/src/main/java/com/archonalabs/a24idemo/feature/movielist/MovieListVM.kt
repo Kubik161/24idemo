@@ -54,8 +54,6 @@ class MovieListVM(
                 is Result.Success -> {
                     hideLoading()
 
-                    Timber.d("movie list was refreshed")
-
                     //map data to recycler items model
                     val data = MovieItemMapper.toMovieItem(result.data)
 
@@ -78,7 +76,6 @@ class MovieListVM(
     }
 
     override fun loadMovieDetail(movieId: Int, moviePosition: Int) {
-        Timber.d("loadMovieDetail %d", movieId)
         viewModelScope.launch {
             when (val result = loadMovieDetailUseCase(LoadMovieDetailUseCase.Params(movieId = movieId))) {
                 is Result.Success -> {

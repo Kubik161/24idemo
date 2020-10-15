@@ -15,7 +15,6 @@ import com.archonalabs.a24idemo.domain.Config
 import com.archonalabs.a24idemo.domain.Constants
 import com.archonalabs.a24idemo.domain.feature.movie.model.MovieItem
 import com.squareup.picasso.Picasso
-import timber.log.Timber
 
 /**
  * Created by Jakub Juroska on 10/14/20.
@@ -46,7 +45,7 @@ class MovieListAdapter(private val context: Context, private val data: MutableLi
         notifyItemChanged(position)
     }
 
-    inner class MovieItemViewHolder(private val itemView: View, private val movieFetcher: MovieFetcher) : RecyclerView.ViewHolder(itemView) {
+    inner class MovieItemViewHolder(itemView: View, private val movieFetcher: MovieFetcher) : RecyclerView.ViewHolder(itemView) {
 
         private val progressView : ProgressBar = itemView.findViewById(R.id.progress_bar)
         private val titleView: TextView = itemView.findViewById(R.id.title)
