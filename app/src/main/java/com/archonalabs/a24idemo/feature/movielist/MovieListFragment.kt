@@ -38,6 +38,7 @@ class MovieListFragment : Fragment() {
 
         binding.reload.setOnClickListener {
             viewModel.loadMovieList(requireContext(), mainViewModel)
+            mainViewModel.clearMoviePosition()
         }
 
         viewModel.movieListAdapter.observe(this, { adapter: MovieListAdapter? ->
@@ -45,8 +46,21 @@ class MovieListFragment : Fragment() {
                 //update recycler view
                 binding.movieList.adapter = adapter
 
-                //vertical for Phone
-                binding.movieList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                val tablet = resources.getBoolean(R.bool.isTablet)
+                if (tablet) {
+                    //horizontal for Tablet
+                    binding.movieList.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                } else {
+                    //vertical for Phone
+                    binding.movieList.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                }
+
+                val lastPosition = mainViewModel.selectedMoviePosition.value
+                if (lastPosition != null && lastPosition != 0) {
+                    binding.movieList.scrollToPosition(lastPosition)
+                }
             }
         })
 
@@ -67,7 +81,9 @@ class MovieListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.loadMovieList(requireContext(), mainViewModel)
+        if (binding.movieList.adapter == null) {
+            viewModel.loadMovieList(requireContext(), mainViewModel)
+        }
     }
 
     companion object {

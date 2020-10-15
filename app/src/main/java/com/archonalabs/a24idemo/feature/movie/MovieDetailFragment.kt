@@ -46,18 +46,28 @@ class MovieDetailFragment : Fragment() {
             if (movieDetail != null) {
                 //update recycler view
                 binding.title.text = movieDetail.title
-                binding.language.text = movieDetail.language
-                binding.genre.text = movieDetail.genre
+                binding.language.text = getString(R.string.movie_language, movieDetail.language)
+                binding.genre.text = getString(R.string.movie_genre, movieDetail.genre)
                 binding.overview.text = movieDetail.overview
-                binding.releaseDate.text = movieDetail.releaseDate
+                binding.releaseDate.text = getString(R.string.movie_release_date, movieDetail.releaseDate)
 
                 //load poster image
-                Picasso.get()
-                    .load(Constants.IMAGE_API_URL + Config.MOVIE_DETAIL_IMAGE_SIZE + movieDetail.posterPath)
-                    .placeholder(R.drawable.picasso_loading_animation)
-                    .resize(binding.poster.width, 0)
-                    .error(R.drawable.no_img)
-                    .into(binding.poster)
+                val tablet = resources.getBoolean(R.bool.isTablet)
+                if (tablet) {
+                    Picasso.get()
+                        .load(Constants.IMAGE_API_URL + Config.MOVIE_DETAIL_IMAGE_SIZE + movieDetail.posterPath)
+                        .placeholder(R.drawable.picasso_loading_animation)
+                        .resize(0, binding.poster.height)
+                        .error(R.drawable.no_img)
+                        .into(binding.poster)
+                } else {
+                    Picasso.get()
+                        .load(Constants.IMAGE_API_URL + Config.MOVIE_DETAIL_IMAGE_SIZE + movieDetail.posterPath)
+                        .placeholder(R.drawable.picasso_loading_animation)
+                        .resize(binding.poster.width, 0)
+                        .error(R.drawable.no_img)
+                        .into(binding.poster)
+                }
             }
         })
     }

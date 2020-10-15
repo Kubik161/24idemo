@@ -66,11 +66,12 @@ class MovieListAdapter(private val context: Context, private val data: MutableLi
                 Picasso.get()
                     .load(Constants.IMAGE_API_URL + Config.IMAGE_SIZE + item.movie.posterPath)
                     .placeholder(R.drawable.picasso_loading_animation)
+                    .fit()
                     .error(R.drawable.no_img)
                     .into(posterView)
 
                 itemView.setOnClickListener {
-                    fragmentRouter.showMovieDetail(item.movieId)
+                    fragmentRouter.showMovieDetail(item.movieId, position)
                 }
             } else {
                 //show progress dialog

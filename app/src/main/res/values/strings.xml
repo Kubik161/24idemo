@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">24i demo</string>
+    <string name="movie_release_date">Date of release: %1$s</string>
+    <string name="movie_genre">Genre: %1$s</string>
+    <string name="movie_language">Language: %1$s</string>
+    <string name="movie_list_reload_title">Load only changes from last days:</string>
+    <string name="movie_list_reload_button_title">Reload</string>
 </resources>

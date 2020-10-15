@@ -9,10 +9,10 @@ import com.archonalabs.a24idemo.domain.Constants
 data class Movie(
     val title : String,
     val posterPath : String,
-    val language : String = "ENG",
-    val genre : String = "Drama",
-    val overview : String = "Really long text, maybe multiline?  maybe multiline  maybe multiline  maybe multiline maybe multiline  maybe multiline v  maybe multiline",
-    val releaseDate : String = "27. september 2014"
+    val language : String,// = "ENG",
+    val genre : String,// = "Drama",
+    val overview : String,// = "Really long text, maybe multiline?  maybe multiline  maybe multiline  maybe multiline maybe multiline  maybe multiline v  maybe multiline",
+    val releaseDate : String,// = "27. september 2014"
 ) {
     companion object {
         fun empty(): Movie {

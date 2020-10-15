@@ -36,7 +36,7 @@ class MovieRepositoryImpl(private val remoteSource: MovieRemoteSource): MovieRep
             }
 
             is Result.Error -> {
-                Timber.e("Loading detail for movie %d failed with: %s", id, movieDetailResult.error)
+                Timber.e("Loading detail for movie %d failed with: %s", id, movieDetailResult.error.message)
                 movieDetailResult
             }
         }

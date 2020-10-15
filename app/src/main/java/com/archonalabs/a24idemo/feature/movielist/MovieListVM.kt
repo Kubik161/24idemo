@@ -15,6 +15,7 @@ import com.archonalabs.a24idemo.domain.Result
 import com.archonalabs.a24idemo.domain.feature.movie.model.MovieItem
 import com.archonalabs.a24idemo.domain.usecase.feature.movie.LoadMovieDetailUseCase
 import com.archonalabs.a24idemo.domain.usecase.feature.movie.LoadMovieListUseCase
+import com.archonalabs.a24idemo.feature.MovieUtils
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -47,8 +48,9 @@ class MovieListVM(
         showLoading()
 
         viewModelScope.launch {
-            //fixme: use start date as Today - Days
-            when(val result = loadMovieListUseCase(LoadMovieListUseCase.Params(null))) {
+            //use start date as (Today - Days)
+            val startDate = MovieUtils.calculateStartDate(days.get())
+            when(val result = loadMovieListUseCase(LoadMovieListUseCase.Params(startDate))) {
                 is Result.Success -> {
                     hideLoading()
 
@@ -88,6 +90,7 @@ class MovieListVM(
 
                 is Result.Error -> {
                     Timber.e(result.error.throwable, "ERROR: %s", result.error.message)
+                    //todo: we should stop repeating requests after X unsuccessful attempts
                     Handler().postDelayed({
                         loadMovieDetail(movieId = movieId, moviePosition = moviePosition)
                     }, Config.REQUEST_REPEAT_DELAY)

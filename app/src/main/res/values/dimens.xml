@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="days_input_padding">8dp</dimen>
+    <dimen name="reload_button_margin_end">16dp</dimen>
+
+    <dimen name="movie_list_item_title_padding">8dp</dimen>
+    <dimen name="movie_list_item_poster_height">0dp</dimen>
+    <dimen name="movie_list_item_poster_width">@dimen/match_parent</dimen>
+    <dimen name="movie_list_item_height">500dp</dimen>
+    <dimen name="movie_list_item_width">@dimen/match_parent</dimen>
+
+    <dimen name="movie_detail_text_padding">8dp</dimen>
+    <dimen name="movie_detail_text_margin">0dp</dimen>
+    <dimen name="movie_detail_text_size">14sp</dimen>
+    <dimen name="movie_detail_title_text_size">16sp</dimen>
+    <dimen name="movie_list_title_text_size">16sp</dimen>
+
+</resources>
